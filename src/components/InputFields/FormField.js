@@ -6,8 +6,6 @@ import {
   ActivityIndicator,
   StyleSheet,
 } from 'react-native';
-import TextInputField from './TextInputField';
-import DropdownField from './DropdownField';
 import {inputTypes} from './inputTypes';
 
 const FormField = ({field, value, error, onChange}) => {

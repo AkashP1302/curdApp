@@ -76,35 +76,29 @@ const UserListScreen = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      {loading ? (
-        <View style={styles.loaderContainer}>
-          <ActivityIndicator size="large" color={appColor} />
-        </View>
-      ) : (
-        <>
-          <UserList
-            users={visibleUsers}
-            isFetchingMore={isFetchingMore}
-            loadMore={loadMore}
-            navigation={navigation}
-            openEditModal={openEditModal}
-          />
+      <UserList
+        users={visibleUsers}
+        isFetchingMore={isFetchingMore}
+        loadMore={loadMore}
+        navigation={navigation}
+        openEditModal={openEditModal}
+      />
 
-          <FloatingButton onPress={() => setModalVisible(true)} />
-          <BottomSheetModal
-            visible={modalVisible}
-            onDismiss={() => {
-              setModalVisible(false);
-              setSelectedUser(null);
-            }}>
-            <KeyboardAvoidingView
-              behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-              style={{flex: 1, paddingBottom: 100}}>
-              <UserForm selectedUser={selectedUser} handleSave={handleSave} />
-            </KeyboardAvoidingView>
-          </BottomSheetModal>
-        </>
-      )}
+      <FloatingButton onPress={() => setModalVisible(true)} />
+      <BottomSheetModal
+        visible={modalVisible}
+        onDismiss={() => {
+          console.log('@@@@@call');
+
+          setModalVisible(false);
+          setSelectedUser(null);
+        }}>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          style={{flex: 1, paddingBottom: 100}}>
+          <UserForm selectedUser={selectedUser} handleSave={handleSave} />
+        </KeyboardAvoidingView>
+      </BottomSheetModal>
     </SafeAreaView>
   );
 };
